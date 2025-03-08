@@ -1,7 +1,7 @@
 # Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
 
 client_id = "97944c95688f416e014a460b304a1f27"
-application_url = "https://measure-cage-minds-ot.trycloudflare.com"
+application_url = "https://celebs-sc-rf-mai.trycloudflare.com"
 embedded = true
 name = "sc-recom"
 handle = "sc-recom"
@@ -27,9 +27,9 @@ scopes = "write_products"
 
 [auth]
 redirect_urls = [
-  "https://measure-cage-minds-ot.trycloudflare.com/auth/callback",
-  "https://measure-cage-minds-ot.trycloudflare.com/auth/shopify/callback",
-  "https://measure-cage-minds-ot.trycloudflare.com/api/auth/callback"
+  "https://celebs-sc-rf-mai.trycloudflare.com/auth/callback",
+  "https://celebs-sc-rf-mai.trycloudflare.com/auth/shopify/callback",
+  "https://celebs-sc-rf-mai.trycloudflare.com/api/auth/callback"
 ]
 
 [pos]

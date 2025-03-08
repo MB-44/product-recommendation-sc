@@ -1,6 +1,6 @@
 import { json, redirect } from "@remix-run/node";
 import { useLoaderData, Form, useActionData } from "@remix-run/react";
-import prisma from "../../db.server";
+import prisma from "../../../db.server";
 import {
   Card,
   FormLayout,
