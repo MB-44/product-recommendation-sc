@@ -1,10 +1,11 @@
 import { json } from "@remix-run/node";
 import { useLoaderData, Form, useActionData } from "@remix-run/react";
 import prisma from "../db.server";
-import shopify, { authenticate } from "../shopify.server";
+import { authenticate } from "../shopify.server";
 import { Page, Card, FormLayout, Button, Text } from "@shopify/polaris";
 
 export const loader = async ({ request }) => {
+  // Load the quiz along with its questions and answers.
   const quiz = await prisma.quiz.findFirst({
     include: {
       questions: {
@@ -19,6 +20,7 @@ export const loader = async ({ request }) => {
 export const action = async ({ request }) => {
   const formData = await request.formData();
   
+  // Count recommendations based on user responses.
   let recommendationCounts = {};
   for (let [key, value] of formData.entries()) {
     if (key.startsWith("question_")) {
@@ -29,8 +31,10 @@ export const action = async ({ request }) => {
     Object.entries(recommendationCounts).sort((a, b) => b[1] - a[1])[0]?.[0] ||
     "default";
 
+  // Authenticate as admin to access Shopify's API.
   const { admin } = await authenticate.admin(request);
 
+  // Use Shopify Admin GraphQL API to fetch products tagged with `bestTag`.
   const productsResponse = await admin.graphql(
     `#graphql
     {
@@ -46,10 +50,11 @@ export const action = async ({ request }) => {
     }`
   );
 
-  // Process the response.
+  // Process the API response.
   const productsData = await productsResponse.json();
   const products = productsData.data.products.edges.map((edge) => edge.node);
 
+  // Build a recommendation message.
   const recommendationMessage = `Based on your answers, we recommend these products: ${products
     .map((p) => p.title)
     .join(", ")}`;
