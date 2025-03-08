@@ -1,7 +1,7 @@
 # Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
 
 client_id = "97944c95688f416e014a460b304a1f27"
-application_url = "https://shadows-prescription-pubs-spray.trycloudflare.com"
+application_url = "https://asking-satisfactory-jerry-farm.trycloudflare.com"
 embedded = true
 name = "sc-recom"
 handle = "sc-recom"
@@ -27,9 +27,9 @@ scopes = "write_products"
 
 [auth]
 redirect_urls = [
-  "https://shadows-prescription-pubs-spray.trycloudflare.com/auth/callback",
-  "https://shadows-prescription-pubs-spray.trycloudflare.com/auth/shopify/callback",
-  "https://shadows-prescription-pubs-spray.trycloudflare.com/api/auth/callback"
+  "https://asking-satisfactory-jerry-farm.trycloudflare.com/auth/callback",
+  "https://asking-satisfactory-jerry-farm.trycloudflare.com/auth/shopify/callback",
+  "https://asking-satisfactory-jerry-farm.trycloudflare.com/api/auth/callback"
 ]
 
 [pos]
