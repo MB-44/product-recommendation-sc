@@ -12,7 +12,6 @@ import {
 import { useState } from "react";
 
 export const loader = async () => {
-  // Load the existing quiz if one exists.
   const quiz = await prisma.quiz.findFirst({
     include: {
       questions: {
@@ -26,7 +25,6 @@ export const loader = async () => {
 export const action = async ({ request }) => {
   const formData = await request.formData();
   const title = formData.get("title");
-  // We expect questions to be provided as a JSON string.
   const questionsJSON = formData.get("questions");
   let questions;
   try {
@@ -35,7 +33,6 @@ export const action = async ({ request }) => {
     return json({ error: "Invalid JSON for questions" }, { status: 400 });
   }
 
-  // For demonstration, we create a new quiz.
   await prisma.quiz.create({
     data: {
       title,
@@ -57,7 +54,6 @@ export default function AdminQuiz() {
   const { quiz } = useLoaderData();
   const actionData = useActionData();
   const [title, setTitle] = useState(quiz?.title || "");
-  // Use a safe default for quiz questions.
   const [questionsJSON, setQuestionsJSON] = useState(
     JSON.stringify(
       (quiz?.questions ?? []).map((q) => ({
